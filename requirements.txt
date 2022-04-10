@@ -1,0 +1,14 @@
+flask
+#Flask-SQLAlchemy
+neoalchemy
+flask-migrate
+psycopg2-binary
+werkzeug
+flask-login
+#sqlalchemy
+neo4j
+py2neo
+#passlib
+pandas
+numpy
+sklearn

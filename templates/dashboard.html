@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="title"></h1>
+  <a href="{{ url_for('api.recomendar') }}" class="navbar-item">Nova Recomendacao</a>
+  <a href="{{ url_for('api.minhas') }}" class="navbar-item">Ir para Minhas Recomendacoes</a>
+{% endblock %}

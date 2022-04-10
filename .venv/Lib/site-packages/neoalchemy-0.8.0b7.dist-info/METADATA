@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: neoalchemy
+Version: 0.8.0b7
+Summary: A microframework for Neo4J inspired by SQLAlchemy.
+Home-page: https://github.com/twobitalchemist/neoalchemy
+Author: Two-Bit Alchemist
+Author-email: seregon@gmail.com
+License: MIT
+Download-URL: https://github.com/twobitalchemist/neoalchemy/tarball/0.8.0b
+Keywords: neo4j,graph,database,cypher,ORM,OGM
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database :: Front-Ends
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: neo4j-driver
+Requires-Dist: python-dateutil
+Requires-Dist: six
+
+UNKNOWN
+
+
