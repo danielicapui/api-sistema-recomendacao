@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request,flash
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user,current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import Usuario,db
 from py2neo import NodeMatcher
@@ -8,7 +8,10 @@ auth = Blueprint('auth',__name__,url_prefix="/auth")
 #rotas da aplicação
 @auth.route('/login')
 def login():
-    return render_template('login.html') 
+    if current_user.is_active:
+        return redirect(url_for('main.profile'))
+    else:
+        return render_template('login.html') 
 @auth.route('/login', methods=['POST','GET'])
 def login_post():
     email = request.form.get('email')
@@ -30,6 +33,8 @@ def login_post():
     return redirect(url_for('main.profile'))
 @auth.route('/signup')
 def signup():
+    if current_user.is_active:
+        return redirect(url_for('main.profile'))
     return render_template('signup.html')
 @auth.route('/signup',methods=['POST'])
 def signup_post():
@@ -59,4 +64,4 @@ def signup_post():
 def logout():
     logout_user()
     flash("Deslogou de profile")
-    return redirect(url_for('main.home'))
+    return redirect(url_for('auth.login'))

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Recomendação</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css')}}">
+
+</head>
+<body>
+    <section class="hero is-primary is-fullheight">
+            <div class="hero-head">
+                <nav class="navbar">
+                    <div class="container">
+    
+                        <div id="navbarMenuHeroA" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a href="{{ url_for('main.home') }}" class="navbar-item">
+                                    Home
+                                </a>
+                                <a href="{{ url_for('main.profile') }}" class="navbar-item">
+                                    Profile
+                                </a>
+                                <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                                    Login
+                                </a>
+                                <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                                    Sign Up
+                                </a>
+                                <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                                    Logout
+                                </a>
+                                <a href="{{ url_for('api.dashboard') }}" class="navbar-item">
+                                    dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+{% block content %}
+<div class="recomendacoes">
+  <h2>Adicione o csv para fazer a recomendação</h2>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+{% endblock %}
+        <form method="POST" action="/api/recomendar" enctype="multipart/form-data">
+            <div class="field">
+                <div class="control">
+                    <input type="file" name="arquivo" class="btn btn-primary btn-block btn-large"> <br> 
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="feature" placeholder="X da recomendação">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="target" placeholder="Y da recomendação">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="target_count" placeholder="Minímo de ocorrências de y=4">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Calcular</button>
+        </form>
+    </div>
+</div>
+<!-- partial -->
+  <script  src="{{ url_for('static',filename='scripts/script.css')}}"></script>
+</body>
+</html>

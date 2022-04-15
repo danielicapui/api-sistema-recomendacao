@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_login import LoginManager
 from py2neo import Graph
 from models import Usuario
@@ -31,4 +31,7 @@ def create_app():
             user2.id=user2.getId()
             return user2
         return None
+    @login_manager.unauthorized_handler
+    def unauthorized():
+        return redirect(url_for("auth.login"))
     return app
