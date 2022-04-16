@@ -14,4 +14,4 @@ if __name__=="__main__":
     @ap.route('/')
     def index():
         return redirect(url_for("auth.login"))
-    ap.run(debug =True,host='0.0.0.0')
+    ap.run(debug=False,host='0.0.0.0')
